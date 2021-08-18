@@ -10,6 +10,8 @@ public:
 	void render();
 	void renderDebugData();
 private:
+	void renderGrid();
+private:
 	sf::RenderWindow* window;
 
 	unsigned int windowWidth;

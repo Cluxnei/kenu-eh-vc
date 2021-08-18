@@ -32,7 +32,7 @@ void Game::renderDebugData() {
 
 void Game::renderGrid() {
     const unsigned int gridCellCount = this->map->getSquareCount();
-    const sf::RectangleShape** grid = this->map->getGrid();
+    sf::RectangleShape** grid = this->map->getGrid();
     for (int i = 0; i < gridCellCount; i++) {
         for (int j = 0; j < gridCellCount; j++) {
             this->window->draw(grid[i][j]);

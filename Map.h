@@ -9,7 +9,9 @@ public:
 	unsigned int getSquareCount();
 	sf::RectangleShape** getGrid();
 private:
-
+	void computeSquareCount(unsigned int unitSize, unsigned int width, unsigned int height);
+	void computeSquareSize(unsigned int unitSize);
+	void computeGridRectangleShapes(unsigned int unitSize, unsigned int width, unsigned int height);
 public:
 
 private:
