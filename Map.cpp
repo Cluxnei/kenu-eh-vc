@@ -7,7 +7,7 @@ Map::Map(unsigned int unitSize, unsigned int width, unsigned int height)
 	this->computeSquareCount(unitSize, width, height);
 	this->computeSquareSize(unitSize);
 	this->computeGrid(unitSize, width, height);
-	
+	this->computePositionMap();
 }
 
 void Map::computeGrid(unsigned int unitSize, unsigned int width, unsigned int height) 
@@ -15,7 +15,6 @@ void Map::computeGrid(unsigned int unitSize, unsigned int width, unsigned int he
 	const float size = static_cast<float>(unitSize);
 	const float leftToCenter = floor((float)width / 2.f - (float)this->squareSize / 2.f);
 	const float topToCenter = floor((float)height / 2.f - (float)this->squareSize / 2.f);
-	const float gridCellOutline = 1.f;
 	const sf::Vector2f gridCellSize(size, size);
 
 	this->grid = new sf::RectangleShape * [this->squareCount];
@@ -28,8 +27,17 @@ void Map::computeGrid(unsigned int unitSize, unsigned int width, unsigned int he
 			this->grid[i][j] = sf::RectangleShape(gridCellSize);
 			this->grid[i][j].setFillColor(sf::Color::Transparent);
 			this->grid[i][j].setOutlineColor(sf::Color::White);
-			this->grid[i][j].setOutlineThickness(gridCellOutline);
+			this->grid[i][j].setOutlineThickness(1.f);
 			this->grid[i][j].setPosition(x, y);
+		}
+	}
+}
+
+void Map::computePositionMap() {
+	for (unsigned int i = 0; i < this->squareCount; i++) {
+		for (unsigned int j = 0; j < this->squareCount; j++) {
+			const sf::Vector2f position = this->grid[i][j].getPosition();
+			this->positionMap.push_back(sf::Vector2f(position.x, position.y));
 		}
 	}
 }
@@ -44,7 +52,7 @@ void Map::computeSquareCount(unsigned int unitSize, unsigned int width, unsigned
 	unsigned int verticalUnitsCount = static_cast<unsigned int>(floor(h / u)) - 1;
 
 	this->squareCount = horizontalUnitsCount > verticalUnitsCount 
-		? this->squareCount = verticalUnitsCount 
+		? verticalUnitsCount 
 		: horizontalUnitsCount;
 }
 

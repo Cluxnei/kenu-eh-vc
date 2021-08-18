@@ -5,13 +5,19 @@
 class Game
 {
 public:
+	/* Game constructor */
 	Game(sf::RenderWindow* window);
+	/* Update the game (game logic) */
 	void update();
+	/* Render the game entities & stuffs */
 	void render();
-	void renderDebugData();
 private:
+	/* Render the debug data, if enabled */
+	void renderDebugData();
+	/* Render the grid */
 	void renderGrid();
 private:
+
 	sf::RenderWindow* window;
 
 	unsigned int windowWidth;
