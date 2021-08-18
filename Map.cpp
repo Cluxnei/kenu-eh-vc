@@ -1,18 +1,19 @@
 #include "Map.h"
+#include "Constants.h"
 #include "SFML/Graphics.hpp"
 #include <cmath>
 
-Map::Map(unsigned int unitSize, unsigned int width, unsigned int height)
+Map::Map(unsigned int width, unsigned int height)
 {
-	this->computeSquareCount(unitSize, width, height);
-	this->computeSquareSize(unitSize);
-	this->computeGrid(unitSize, width, height);
+	this->computeSquareCount(width, height);
+	this->computeSquareSize();
+	this->computeGrid(width, height);
 	this->computePositionMap();
 }
 
-void Map::computeGrid(unsigned int unitSize, unsigned int width, unsigned int height) 
+void Map::computeGrid(unsigned int width, unsigned int height) 
 {
-	const float size = static_cast<float>(unitSize);
+	const float size = static_cast<float>(Constants::_UNIT_SIZE);
 	const float leftToCenter = floor((float)width / 2.f - (float)this->squareSize / 2.f);
 	const float topToCenter = floor((float)height / 2.f - (float)this->squareSize / 2.f);
 	const sf::Vector2f gridCellSize(size, size);
@@ -42,9 +43,9 @@ void Map::computePositionMap() {
 	}
 }
 
-void Map::computeSquareCount(unsigned int unitSize, unsigned int width, unsigned int height) 
+void Map::computeSquareCount(unsigned int width, unsigned int height) 
 {
-	const float u = static_cast<float>(unitSize);
+	const float u = static_cast<float>(Constants::_UNIT_SIZE);
 	const float w = static_cast<float>(width);
 	const float h = static_cast<float>(height);
 
@@ -56,9 +57,9 @@ void Map::computeSquareCount(unsigned int unitSize, unsigned int width, unsigned
 		: horizontalUnitsCount;
 }
 
-void Map::computeSquareSize(unsigned int unitSize) 
+void Map::computeSquareSize() 
 {
-	this->squareSize = this->squareCount * unitSize;
+	this->squareSize = this->squareCount * Constants::_UNIT_SIZE;
 }
 
 unsigned int Map::getSquareSize() 
@@ -74,4 +75,9 @@ unsigned int Map::getSquareCount()
 sf::RectangleShape** Map::getGrid() 
 {
 	return this->grid;
+}
+
+sf::Vector2f Map::getRandomPosition()
+{
+	return this->positionMap[Constants::randomIntBetween(0, this->positionMap.size() - 1)];
 }
