@@ -16,6 +16,8 @@ public:
 	void addPlayer(Player* player);
 	/* Returns safe position inside a map and without collisions with other stuffs */
 	sf::Vector2f getSafePosition();
+	/* Returns the instance of map */
+	Map* getMap();
 private:
 	/* Render the debug data, if enabled */
 	void renderDebugData();

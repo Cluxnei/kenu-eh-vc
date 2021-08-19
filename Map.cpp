@@ -13,7 +13,7 @@ Map::Map(unsigned int width, unsigned int height)
 
 void Map::computeGrid(unsigned int width, unsigned int height) 
 {
-	const float size = static_cast<float>(Constants::_UNIT_SIZE);
+	const float size = static_cast<float>(this->unitSize);
 	const float leftToCenter = floor((float)width / 2.f - (float)this->squareSize / 2.f);
 	const float topToCenter = floor((float)height / 2.f - (float)this->squareSize / 2.f);
 	const sf::Vector2f gridCellSize(size, size);
@@ -45,21 +45,27 @@ void Map::computePositionMap() {
 
 void Map::computeSquareCount(unsigned int width, unsigned int height) 
 {
-	const float u = static_cast<float>(Constants::_UNIT_SIZE);
 	const float w = static_cast<float>(width);
 	const float h = static_cast<float>(height);
 
-	unsigned int horizontalUnitsCount = static_cast<unsigned int>(floor(w / u)) - 1;
-	unsigned int verticalUnitsCount = static_cast<unsigned int>(floor(h / u)) - 1;
+	float u = static_cast<float>(Constants::__BASE_UNIT_SIZE);
+	while (u > 1.f) {
+		unsigned int horizontalUnitsCount = static_cast<unsigned int>(floor(w / u)) - 1;
+		unsigned int verticalUnitsCount = static_cast<unsigned int>(floor(h / u)) - 1;
+		this->squareCount = std::min(horizontalUnitsCount, verticalUnitsCount);
+		if (this->squareCount >= 64) {
+			this->unitSize = static_cast<unsigned int>(ceil(u));
+			this->squareCount = 64;
+			break;
+		}
+		u--;
+	}
 
-	this->squareCount = horizontalUnitsCount > verticalUnitsCount 
-		? verticalUnitsCount 
-		: horizontalUnitsCount;
 }
 
 void Map::computeSquareSize() 
 {
-	this->squareSize = this->squareCount * Constants::_UNIT_SIZE;
+	this->squareSize = this->squareCount * this->unitSize;
 }
 
 unsigned int Map::getSquareSize() 
@@ -75,6 +81,11 @@ unsigned int Map::getSquareCount()
 sf::RectangleShape** Map::getGrid() 
 {
 	return this->grid;
+}
+
+unsigned int Map::getUnitSize()
+{
+	return this->unitSize;
 }
 
 sf::Vector2f Map::getRandomPosition()

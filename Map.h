@@ -11,6 +11,7 @@ public:
 	unsigned int getSquareSize();
 	unsigned int getSquareCount();
 	sf::RectangleShape** getGrid();
+	unsigned int getUnitSize();
 	/* Return random position inside a map */
 	sf::Vector2f getRandomPosition();
 private:
@@ -37,6 +38,7 @@ private:
 	
 	unsigned int squareSize;
 	unsigned int squareCount;
+	unsigned int unitSize;
 	
 	std::vector<sf::Vector2f> positionMap;
 };

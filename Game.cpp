@@ -31,6 +31,11 @@ sf::Vector2f Game::getSafePosition()
     return randomMapPosition;
 }
 
+Map* Game::getMap()
+{
+    return this->map;
+}
+
 void Game::computeWindowSize(sf::RenderWindow* window) 
 {
     const sf::Vector2u size = window->getSize();
