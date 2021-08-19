@@ -2,7 +2,7 @@
 #include <random>
 #include <cstdlib>
 
-static class Constants
+class Constants
 {
 public:
 	const static unsigned int _UNIT_SIZE = 40;
