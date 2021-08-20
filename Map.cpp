@@ -53,9 +53,9 @@ void Map::computeSquareCount(unsigned int width, unsigned int height)
 		unsigned int horizontalUnitsCount = static_cast<unsigned int>(floor(w / u)) - 1;
 		unsigned int verticalUnitsCount = static_cast<unsigned int>(floor(h / u)) - 1;
 		this->squareCount = std::min(horizontalUnitsCount, verticalUnitsCount);
-		if (this->squareCount >= 64) {
+		if (this->squareCount >= Constants::_NUMBER_OF_MAP_SQUARES) {
 			this->unitSize = static_cast<unsigned int>(ceil(u));
-			this->squareCount = 64;
+			this->squareCount = Constants::_NUMBER_OF_MAP_SQUARES;
 			break;
 		}
 		u--;
