@@ -6,7 +6,7 @@
 
 int main()
 {
-    srand(time(0));
+    srand(static_cast<unsigned int>(time(0)));
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "kenu é vc");
     // window.setPosition(sf::Vector2i(1200, 900));
     Game game(&window);

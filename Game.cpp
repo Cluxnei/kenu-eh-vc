@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <string>
 #include "Game.h"
 #include "Map.h"
 #include "Constants.h"

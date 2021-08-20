@@ -42,5 +42,6 @@ private:
 	Map* map;
 
 	std::vector<Player *> players;
+
 };
 
