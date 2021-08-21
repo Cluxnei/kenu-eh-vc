@@ -10,6 +10,7 @@ public:
 	void setPosition(float x, float y);
 	void setVelocity(float x, float y);
 	void setControl(Control* control);
+	void setTexture(sf::Texture& texture);
 	void update();
 
 private:
@@ -21,6 +22,6 @@ private:
 	sf::Vector2f velocity;
 
 public:
-	sf::RectangleShape shape;
+	sf::Sprite shape;
 };
 

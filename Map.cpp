@@ -27,7 +27,7 @@ void Map::computeGrid(unsigned int width, unsigned int height)
 			const float y = j * gridCellSize.y + topToCenter;
 			this->grid[i][j] = sf::RectangleShape(gridCellSize);
 			this->grid[i][j].setFillColor(sf::Color::Transparent);
-			this->grid[i][j].setOutlineColor(sf::Color::White);
+			this->grid[i][j].setOutlineColor(sf::Color(50, 50, 50, 100));
 			this->grid[i][j].setOutlineThickness(1.f);
 			this->grid[i][j].setPosition(x, y);
 		}

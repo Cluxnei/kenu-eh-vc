@@ -1,10 +1,10 @@
 #include "Player.h"
 #include "Constants.h"
+#include "Control.h"
 
 Player::Player(sf::Vector2f size) {
 	this->size = size;
-	this->shape.setSize(this->size);
-	this->shape.setFillColor(sf::Color::Red);
+	this->control = new Control();
 }
 
 void Player::setPosition(float x, float y) {
@@ -20,6 +20,12 @@ void Player::setVelocity(float x, float y) {
 void Player::setControl(Control* control)
 {
 	this->control = control;
+}
+
+void Player::setTexture(sf::Texture& texture)
+{
+	texture.setSmooth(true);
+	this->shape.setTexture(texture);
 }
 
 void Player::update()

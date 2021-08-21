@@ -23,7 +23,14 @@ int main()
     
     const float playerSize = static_cast<float>(game->getMap()->getUnitSize());
 
+    sf::Texture playerTexture;
+
+    if (!playerTexture.loadFromFile("player.png", sf::IntRect(0, 0, playerSize, playerSize)))
+        return 1;
+
     Player* player = new Player(sf::Vector2f(playerSize, playerSize));
+
+    player->setTexture(playerTexture);
 
     sf::Vector2f playerPosition = game->getSafePosition();
 
