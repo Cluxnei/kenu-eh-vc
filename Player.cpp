@@ -26,6 +26,8 @@ void Player::setTexture(sf::Texture& texture)
 {
 	texture.setSmooth(true);
 	this->shape.setTexture(texture);
+	sf::Vector2u textureSize = this->shape.getTexture()->getSize();
+	this->shape.setOrigin(sf::Vector2f(textureSize.x / 2.f, textureSize.y / 2.f));
 }
 
 void Player::update()
