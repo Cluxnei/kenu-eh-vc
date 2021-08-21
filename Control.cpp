@@ -10,6 +10,8 @@ Control::Control()
 
 	this->movementXFactor = 0.1f;
 	this->movementYFactor = 0.1f;
+
+	this->degrees = 0;
 	
 	this->moveUpKey = sf::Keyboard::Key::W;
 	this->moveDownKey = sf::Keyboard::Key::S;
