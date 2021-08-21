@@ -63,7 +63,6 @@ bool Control::inMovementArea(const sf::Vector2f position, const sf::Vector2f siz
 
 float Control::getMovementResultRotationDegree()
 {
-	float degrees = 0;
 	if (this->moveUp) {
 		degrees = 0;
 		if (this->moveLeft)

@@ -16,6 +16,7 @@ private:
 	
 	float movementXFactor;
 	float movementYFactor;
+	float degrees = 0;
 	
 	std::pair<std::pair<float, float>, std::pair<float, float>> movementLimits;
 
