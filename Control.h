@@ -28,5 +28,6 @@ public:
 	void setMovementLimits(std::pair<std::pair<float, float>, std::pair<float, float>> movementLimit);
 	sf::Vector2f getMovementResultVector();
 	bool inMovementArea(const sf::Vector2f position, const sf::Vector2f size);
+	float getMovementResultRotationDegree();
 };
 

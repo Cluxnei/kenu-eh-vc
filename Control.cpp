@@ -61,6 +61,36 @@ bool Control::inMovementArea(const sf::Vector2f position, const sf::Vector2f siz
 		&& position.y + size.y <= this->movementLimits.second.first;
 }
 
+float Control::getMovementResultRotationDegree()
+{
+	float degrees = 0;
+	if (this->moveUp) {
+		degrees = 0;
+		if (this->moveLeft)
+			degrees = -45;
+		if (this->moveRight)
+			degrees += 45;
+	}
+	if (this->moveDown) {
+		degrees = 180;
+		if (this->moveLeft)
+			degrees = -225;
+		if (this->moveRight)
+			degrees = 225;
+	}
+	if (this->moveLeft) {
+		degrees = -90;
+		if (this->moveDown)
+			degrees = 135;
+		if (this->moveUp)
+			degrees = -135;
+	}
+	if (this->moveRight) {
+
+	}
+	return degrees;
+}
+
 void Control::bindMoveKeys() {
 	this->moveUp = sf::Keyboard::isKeyPressed(this->moveUpKey);
 	this->moveDown = sf::Keyboard::isKeyPressed(this->moveDownKey);

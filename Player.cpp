@@ -35,6 +35,12 @@ void Player::update()
 	bool canMove = this->control->inMovementArea(nextPosition, this->size);
 	if (canMove) {
 		this->setPosition(nextPosition.x, nextPosition.y);
+		this->setRotation(this->control->getMovementResultRotationDegree());
 	}
+}
+
+void Player::setRotation(float rotationDegree) 
+{
+	this->shape.setRotation(rotationDegree);
 }
 

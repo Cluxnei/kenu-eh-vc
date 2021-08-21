@@ -12,6 +12,7 @@ public:
 	void setControl(Control* control);
 	void setTexture(sf::Texture& texture);
 	void update();
+	void setRotation(float rotationDegree);
 
 private:
 
