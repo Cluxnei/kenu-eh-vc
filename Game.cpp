@@ -46,7 +46,15 @@ void Game::computeWindowSize(sf::RenderWindow* window)
 
 void Game::update() 
 {
+    this->updatePlayers();
+}
 
+
+void Game::updatePlayers()
+{
+    for (auto& player : this->players) {
+        player->update();
+    }
 }
 
 void Game::render() 

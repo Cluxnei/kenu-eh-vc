@@ -1,4 +1,23 @@
-#include "PlayerControl.h"
+#include <SFML/Graphics.hpp>
+#include "Control.h"
+
+Control::Control()
+{
+	this->moveUp = false;
+	this->moveDown = false;
+	this->moveLeft = false;
+	this->moveRight = false;
+
+	this->movementXFactor = 0.1f;
+	this->movementYFactor = 0.1f;
+	
+	this->moveUpKey = sf::Keyboard::Key::W;
+	this->moveDownKey = sf::Keyboard::Key::S;
+	this->moveLeftKey = sf::Keyboard::Key::A;
+	this->moveRightKey = sf::Keyboard::Key::D;
+
+	this->movementLimits = std::make_pair(std::make_pair(0.f, 0.f), std::make_pair(0.f, 0.f));
+}
 
 void Control::setMoveKeys(const sf::Keyboard::Key up, const sf::Keyboard::Key down, const sf::Keyboard::Key left, const sf::Keyboard::Key right)
 {
@@ -14,9 +33,9 @@ void Control::setMovementFactor(const float x, const float y)
 	this->movementYFactor = y;
 }
 
-void Control::setMovementLimits(const float minX, const float maxX, const float minY, const float maxY)
+void Control::setMovementLimits(std::pair<std::pair<float, float>, std::pair<float, float>> movementLimit)
 {
-	this->movementLimits = std::make_pair(std::make_pair(minX, maxX), std::make_pair(minY, maxY));
+	this->movementLimits = movementLimit;
 }
 
 sf::Vector2f Control::getMovementResultVector()

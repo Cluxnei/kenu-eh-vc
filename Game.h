@@ -27,6 +27,7 @@ private:
 	void computeWindowSize(sf::RenderWindow* window);
 	/* Render the players */
 	void renderPlayers();
+	void updatePlayers();
 private:
 
 	sf::RenderWindow* window;

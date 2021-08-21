@@ -14,6 +14,7 @@ public:
 	unsigned int getUnitSize();
 	/* Return random position inside a map */
 	sf::Vector2f getRandomPosition();
+	std::pair<std::pair<float, float>, std::pair<float, float>> getLimits();
 private:
 	/* Calculates the maximum number of squares to fit the screen */
 	void computeSquareCount(unsigned int width, unsigned int height);

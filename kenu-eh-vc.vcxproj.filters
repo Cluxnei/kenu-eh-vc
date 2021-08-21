@@ -27,7 +27,7 @@
     <ClCompile Include="Player.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerControl.cpp">
+    <ClCompile Include="Control.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
   </ItemGroup>

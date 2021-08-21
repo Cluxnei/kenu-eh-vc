@@ -34,7 +34,8 @@ void Map::computeGrid(unsigned int width, unsigned int height)
 	}
 }
 
-void Map::computePositionMap() {
+void Map::computePositionMap() 
+{
 	for (unsigned int i = 0; i < this->squareCount; i++) {
 		for (unsigned int j = 0; j < this->squareCount; j++) {
 			const sf::Vector2f position = this->grid[i][j].getPosition();
@@ -91,4 +92,27 @@ unsigned int Map::getUnitSize()
 sf::Vector2f Map::getRandomPosition()
 {
 	return this->positionMap[Constants::randomIntBetween(0, this->positionMap.size() - 1)];
+}
+
+std::pair<std::pair<float, float>, std::pair<float, float>> Map::getLimits()
+{
+	const float velocityOffset = Constants::getMovementFactor() * this->unitSize;
+
+	std::pair<std::pair<float, float>, std::pair<float, float>> limits;
+	
+	sf::RectangleShape square = this->grid[0][0];
+	
+	limits.first.first = square.getPosition().x - velocityOffset;
+	
+	limits.second.second = square.getPosition().y - velocityOffset;
+	
+	square = this->grid[Constants::_NUMBER_OF_MAP_SQUARES - 1][0];
+	
+	limits.first.second = square.getPosition().x + this->unitSize + velocityOffset;
+	
+	square = this->grid[0][Constants::_NUMBER_OF_MAP_SQUARES - 1];
+	
+	limits.second.first = square.getPosition().y + this->unitSize + velocityOffset;
+
+	return limits;
 }
