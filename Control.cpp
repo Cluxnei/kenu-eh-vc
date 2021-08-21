@@ -67,26 +67,30 @@ float Control::getMovementResultRotationDegree()
 	if (this->moveUp) {
 		degrees = 0;
 		if (this->moveLeft)
-			degrees = -45;
+			degrees += -45;
 		if (this->moveRight)
 			degrees += 45;
 	}
 	if (this->moveDown) {
 		degrees = 180;
 		if (this->moveLeft)
-			degrees = -225;
+			degrees += -45;
 		if (this->moveRight)
-			degrees = 225;
+			degrees += 45;
 	}
 	if (this->moveLeft) {
 		degrees = -90;
 		if (this->moveDown)
-			degrees = 135;
+			degrees += -45;
 		if (this->moveUp)
-			degrees = -135;
+			degrees += 45;
 	}
 	if (this->moveRight) {
-
+		degrees = 90;
+		if (this->moveDown)
+			degrees += 45;
+		if (this->moveUp)
+			degrees += -45;
 	}
 	return degrees;
 }
